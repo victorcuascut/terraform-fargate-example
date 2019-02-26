@@ -68,13 +68,13 @@ resource "aws_security_group" "ecs_tasks" {
 }
 
 resource "aws_alb" "main" {
-  name            = "tf-ecs-chat"
+  name            = "tf-ecs-demo"
   subnets         = ["${data.aws_subnet.public.*.id}"]
   security_groups = ["${aws_security_group.lb.id}"]
 }
 
 resource "aws_alb_target_group" "app" {
-  name        = "tf-ecs-chat"
+  name        = "tf-ecs-demo"
   port        = 80
   protocol    = "HTTP"
   vpc_id      = "${data.aws_vpcs.selected.ids[0]}"
